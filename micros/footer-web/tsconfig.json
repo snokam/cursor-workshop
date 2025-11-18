@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "isolatedModules": true
+  },
+  "include": [
+    "src/**/*",
+    "package.json"
+  ]
+}
