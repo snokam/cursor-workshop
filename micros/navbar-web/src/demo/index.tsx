@@ -8,7 +8,7 @@ function Demo() {
   const [theme, setTheme] = useState(HeaderTheme.Light);
   return (
     <>
-      <SimpleHeader backUrl="#" theme={theme} />
+      <SimpleHeader theme={theme} />
       <Styled.Container theme={theme}>
         <div>
           Light
