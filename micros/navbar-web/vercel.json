@@ -1,0 +1,6 @@
+{
+  "buildCommand": "cd ../.. && pnpm build --filter=@snokam/navbar-web...",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "ignoreCommand": "npx turbo-ignore"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "cursor-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "micros/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @snokam/backend & npm run dev -w @snokam/frontend",
+    "dev:frontend": "npm run dev -w @snokam/frontend",
+    "dev:backend": "npm run dev -w @snokam/backend",
+    "build": "npm run build -w @snokam/frontend",
+    "build:backend": "npm run build -w @snokam/backend"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
