@@ -1,0 +1,67 @@
+{
+  "name": "@snokam/core",
+  "description": "Snøkam core components",
+  "version": "1.4.5",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "package.json",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:snokam/components.git",
+    "directory": "@snokam/core"
+  },
+  "scripts": {
+    "start": "webpack --watch --config=../../../webpack/webpack.dev.js",
+    "build": "webpack --config=../../../webpack/webpack.prod.js",
+    "build:doc": "webpack --config=../../../webpack/webpack.dev.js",
+    "clean": "rm -rf lib"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.2"
+  },
+  "peerDependencies": {
+    "next": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "exports": {
+    ".": {
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    },
+    "./theme": {
+      "import": "./lib/theme.js",
+      "require": "./lib/theme.js",
+      "types": "./lib/theme.d.ts"
+    },
+    "./layout": {
+      "import": "./lib/layout.js",
+      "require": "./lib/layout.js",
+      "types": "./lib/layout.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/index.d.ts"
+      ],
+      "theme": [
+        "lib/theme.d.ts"
+      ],
+      "layout": [
+        "lib/layout.d.ts"
+      ]
+    }
+  },
+  "gitHead": "cafd7892ae2d87f417cc6be50b83884e42eb3d87"
+}
