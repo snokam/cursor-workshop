@@ -1,211 +1,214 @@
-# @snokam/core Package Documentation
+# AI Agents Documentation
+
+This document describes how AI agents can be used to assist with development in this Cursor Workshop project.
 
 ## Overview
 
-The `@snokam/core` package is a comprehensive React component library that provides a foundation for building Snøkam applications. It includes layout components, theming support, loaders, breadcrumbs, meta tags, and scripts. The package is built with React, TypeScript, Emotion (styled-components), and Material-UI (MUI).
+This project is designed to work with AI-assisted development tools like Cursor. The codebase follows patterns that make it easy for AI agents to understand and modify.
 
----
+## Project Structure
 
-## Main Exports
-
-### From Root Package (`.`)
-
-```typescript
-export { default as Layout } from "./Layout/index";
-export { default as Theme, Color, BaseColor } from "./Themes/index";
-export { default as Breadcrumbs } from "./Breadcrumbs";
-export { default as CommonMetaTags } from "./MetaTags";
-export { default as CommonScripts } from "./Scripts";
-export { LogoLoader, PageLoader, LoaderVariant } from "./Loader";
+```
+cursor-workshop/
+├── frontend/          # Next.js application
+├── backend/           # Express API server
+└── micros/            # Micro-frontends (navbar, footer)
 ```
 
-### From `./theme` Export
+## Agent-Friendly Patterns
 
-```typescript
-export { BaseColor, Color, theme } from './Themes';
-export { default as Theme };
+### Code Style
+
+- **Arrow Functions**: Always use arrow functions and ES6+ syntax
+- **TypeScript**: Full type safety across all packages
+- **Consistent Naming**: Clear, descriptive names for components and functions
+
+### Component Architecture
+
+- **Component Organization**: Components are organized in folders with `index.tsx` and `styled.tsx` files
+- **Type Definitions**: Types are defined in separate `types.tsx` files when needed
+- **Styled Components**: Using Emotion for styling with separation of concerns
+
+## Common Agent Tasks
+
+### 1. Adding New Features
+
+Agents can help implement new features by:
+- Creating new components following existing patterns
+- Adding API endpoints in the backend
+- Integrating micro-frontends when needed
+
+**Example Request:**
+```
+Add a new blog post detail page at /blog/[slug] that displays full post content
 ```
 
-### From `./layout` Export
+### 2. Refactoring
 
-```typescript
-export { default as Layout };
-export { Breakpoints } from "./Layout/index";
-export * from "./Layout/types"; // Includes all type definitions
+Agents can refactor code while maintaining:
+- Type safety
+- Existing functionality
+- Code style consistency
+
+**Example Request:**
+```
+Refactor the post card component to use a more modern layout
 ```
 
----
+### 3. Bug Fixes
 
-### Color Enum
+Agents can help identify and fix issues:
+- Type errors
+- Runtime errors
+- Logic bugs
+- Styling issues
 
-Predefined colors used throughout the package:
-
-```typescript
-export enum Color {
-  Inherit = 'inherit',
-  DarkBlue = '#071d41',
-  Blue = '#67DAFD',
-  LightBlue = '#E1F8FF',
-  LightGreen = '#ACFFA4',
-  DarkGreen = '#11CF7F',
-}
+**Example Request:**
+```
+Fix the API client to handle errors properly
 ```
 
----
+### 4. Testing
 
-## Layout Components
+Agents can help add tests:
+- Unit tests for components
+- Integration tests for API endpoints
+- E2E tests for user flows
 
-The Layout system provides three main components: `Container`, `Section`, and `Content`.
+## Development Workflows
 
-### Container
+### Starting Development
 
-The root layout container with support for themes and animated transitions.
+```bash
+# Install dependencies
+npm install
 
-#### LayoutTheme Enum
+# Start all services
+npm run dev
 
-```typescript
-export enum LayoutTheme {
-  Light = "light",
-  Dark = "dark",
-}
+# Or start individually
+npm run dev:frontend
+npm run dev:backend
 ```
 
-#### Usage Example
+### Adding Dependencies
+
+When agents add new dependencies:
+1. Add to the appropriate `package.json` (root, frontend, backend, or micros)
+2. Run `npm install` to update lock file
+3. Import and use in code
+
+### Creating New Components
+
+Agents should follow this structure:
+
+```
+ComponentName/
+├── index.tsx      # Main component logic
+├── styled.tsx     # Styled components (if using Emotion)
+└── types.tsx      # TypeScript types (if needed)
+```
+
+## API Integration
+
+### Backend Endpoints
+
+The backend provides RESTful APIs:
+- `GET /api/posts` - List all posts
+- `GET /api/posts/:slug` - Get single post
+- `GET /api/tags` - Get all tags
+- `GET /api/health` - Health check
+
+### Frontend API Client
+
+Located at `frontend/src/clients/api.ts`, this client handles:
+- API requests
+- Error handling
+- Type-safe responses
+
+## Micro-Frontend Architecture
+
+The project uses micro-frontends for:
+- **Navbar** (`micros/navbar-web`)
+- **Footer** (`micros/footer-web`)
+
+Agents working with micro-frontends should:
+- Maintain versioned components (`v1/`, `v2/`, etc.)
+- Keep demo pages for testing
+- Follow the same component structure patterns
+
+## Best Practices for Agents
+
+1. **Read Before Writing**: Always read existing files to understand patterns
+2. **Type Safety**: Maintain TypeScript types throughout
+3. **Consistency**: Follow existing code style and patterns
+4. **Testing**: Consider adding tests for new features
+5. **Documentation**: Update relevant docs when adding features
+
+## Common Patterns
+
+### React Components
 
 ```typescript
-import { Layout } from '@snokam/core';
-import { LayoutTheme, TransitionType, Color } from '@snokam/core/layout';
+import React from 'react';
+import { styled } from '@emotion/react';
 
-export function MyComponent() {
+const Container = styled.div`
+  // styles here
+`;
+
+export const MyComponent = () => {
   return (
-    <Layout.Container
-      theme={LayoutTheme.Dark}
-      transitions={{
-        bottom: {
-          type: TransitionType.Wave,
-          color: Color.DarkGreen,
-        },
-      }}
-    >
-      <Layout.Content>Your content here</Layout.Content>
-    </Layout.Container>
+    <Container>
+      {/* component content */}
+    </Container>
   );
+};
+```
+
+### API Endpoints
+
+```typescript
+app.get('/api/endpoint', (req, res) => {
+  // handler logic
+  res.json({ data: 'response' });
+});
+```
+
+### Type Definitions
+
+```typescript
+export interface MyType {
+  id: string;
+  name: string;
 }
 ```
 
-### Section
+## Troubleshooting
 
-A flex container for organizing content vertically with configurable padding.
+### Common Issues
 
-#### Padding Enum
+1. **Type Errors**: Ensure all types are properly imported and defined
+2. **Module Resolution**: Check workspace configuration in root `package.json`
+3. **Port Conflicts**: Backend runs on 3001, frontend on 3000
 
-```typescript
-export enum Padding {
-  None = "none",          // 0
-  Small = "small",        // 2rem
-  Medium = "medium",      // 4rem
-  Large = "large",        // 6rem
-}
-```
+### Getting Help
 
-#### Usage Example
+When agents encounter issues:
+1. Check existing code for similar patterns
+2. Review TypeScript errors carefully
+3. Ensure dependencies are installed
+4. Verify workspace configuration
 
-```typescript
-<Layout.Section padding={Padding.Medium}>
-  <div>Item 1</div>
-  <div>Item 2</div>
-</Layout.Section>
-```
+## Future Enhancements
 
-### Content
+Agents can help implement:
+- Authentication system
+- Admin panel
+- Search and filtering
+- Related posts feature
+- Image uploads
+- Comments system
+- SEO improvements
 
-A centered content wrapper with responsive padding and maximum widths.
-
-#### Width Enum
-
-```typescript
-export enum Width {
-  Normal = "normal",              // 1272px
-  Narrow = "narrow",              // 1080px
-  ExtraNarrow = "extraNarrow",    // 880px
-}
-```
-
----
-
-## Transitions
-
-### TransitionType Enum
-
-```typescript
-export enum TransitionType {
-  Wave = "wave",
-  Curve = "curve",
-}
-```
-
-### Transitions Interface
-
-```typescript
-export interface Transitions {
-  top?: TransitionWithOptions;
-  bottom?: TransitionWithOptions;
-}
-```
-
----
-
-## Loaders
-
-### LoaderVariant Enum
-
-```typescript
-export enum LoaderVariant {
-  Slide = "slide",
-  Pulse = "pulse",
-  TriplePulse = "triple-pulse",
-}
-```
-
-#### Usage Example
-
-```typescript
-import { LogoLoader, PageLoader, LoaderVariant } from '@snokam/core';
-
-// Logo loader
-<LogoLoader variant={LoaderVariant.Pulse} />
-
-// Full-page loader
-<PageLoader variant={LoaderVariant.TriplePulse} />
-```
-
----
-
-## Other Components
-
-### CommonMetaTags
-
-Provides essential meta tags including stylesheets and favicons.
-
-```typescript
-import { CommonMetaTags } from '@snokam/core';
-
-<head>
-  <CommonMetaTags />
-</head>
-```
-
-### Breadcrumbs
-
-Navigation breadcrumbs using Material-UI.
-
-```typescript
-import { Breadcrumbs } from '@snokam/core';
-
-<Breadcrumbs
-  crumbs={[
-    { name: 'Home', href: '/' },
-    { name: 'Products', href: '/products' },
-  ]}
-/>
-```
+See `README.md` for detailed task descriptions.
