@@ -1,181 +1,181 @@
-# AI Agents Documentation
+# AI Agenter Dokumentasjon
 
-This document describes how AI agents can be used to assist with development in this Cursor Workshop project.
+Dette dokumentet beskriver hvordan AI-agenter kan brukes til å assistere med utvikling i dette Cursor Workshop-prosjektet.
 
-## Overview
+## Oversikt
 
-This project is designed to work with AI-assisted development tools like Cursor. The codebase follows patterns that make it easy for AI agents to understand and modify.
+Dette prosjektet er designet for å fungere med AI-assisterte utviklingsverktøy som Cursor. Kodebasen følger mønstre som gjør det enkelt for AI-agenter å forstå og modifisere.
 
-## Project Structure
+## Prosjektstruktur
 
 ```
 cursor-workshop/
-├── frontend/          # Next.js application
-├── backend/           # Express API server
+├── frontend/          # Next.js-applikasjon
+├── backend/           # Express API-server
 └── micros/            # Micro-frontends (navbar, footer)
 ```
 
-## Agent-Friendly Patterns
+## Agent-vennlige Mønstre
 
-### Code Style
+### Kode-stil
 
-- **Arrow Functions**: Always use arrow functions and ES6+ syntax
-- **TypeScript**: Full type safety across all packages
-- **Consistent Naming**: Clear, descriptive names for components and functions
+- **Pilfunksjoner**: Bruk alltid pilfunksjoner og ES6+ syntaks
+- **TypeScript**: Full typesikkerhet på tvers av alle pakker
+- **Konsistent Navngiving**: Klare, beskrivende navn for komponenter og funksjoner
 
-### Component Architecture
+### Komponentarkitektur
 
-- **Component Organization**: Components are organized in folders with `index.tsx` and `styled.tsx` files
-- **Type Definitions**: Types are defined in separate `types.tsx` files when needed
-- **Styled Components**: Using Emotion for styling with separation of concerns
+- **Komponentorganisering**: Komponenter er organisert i mapper med `index.tsx` og `styled.tsx` filer
+- **Typedefinisjoner**: Typer er definert i separate `types.tsx` filer når nødvendig
+- **Styled Components**: Bruker Emotion for styling med separasjon av bekymringer
 
-## Common Agent Tasks
+## Vanlige Agent-oppgaver
 
-### 1. Adding New Features
+### 1. Legge til Nye Funksjoner
 
-Agents can help implement new features by:
-- Creating new components following existing patterns
-- Adding API endpoints in the backend
-- Integrating micro-frontends when needed
+Agenter kan hjelpe med å implementere nye funksjoner ved å:
+- Opprette nye komponenter som følger eksisterende mønstre
+- Legge til API-endepunkter i backend
+- Integrere micro-frontends når nødvendig
 
-**Example Request:**
+**Eksempel på Forespørsel:**
 ```
-Add a new blog post detail page at /blog/[slug] that displays full post content
-```
-
-### 2. Refactoring
-
-Agents can refactor code while maintaining:
-- Type safety
-- Existing functionality
-- Code style consistency
-
-**Example Request:**
-```
-Refactor the post card component to use a more modern layout
+Legg til en ny blogginnlegg-detaljside på /blog/[slug] som viser fullt innleggsinnhold
 ```
 
-### 3. Bug Fixes
+### 2. Refaktorering
 
-Agents can help identify and fix issues:
-- Type errors
-- Runtime errors
-- Logic bugs
-- Styling issues
+Agenter kan refaktorere kode samtidig som de opprettholder:
+- Typesikkerhet
+- Eksisterende funksjonalitet
+- Konsistent kode-stil
 
-**Example Request:**
+**Eksempel på Forespørsel:**
 ```
-Fix the API client to handle errors properly
+Refaktorer innleggskort-komponenten for å bruke et mer moderne layout
+```
+
+### 3. Feilrettinger
+
+Agenter kan hjelpe med å identifisere og fikse problemer:
+- Typefeil
+- Runtime-feil
+- Logikkfeil
+- Styling-problemer
+
+**Eksempel på Forespørsel:**
+```
+Fiks API-klienten for å håndtere feil riktig
 ```
 
 ### 4. Testing
 
-Agents can help add tests:
-- Unit tests for components
-- Integration tests for API endpoints
-- E2E tests for user flows
+Agenter kan hjelpe med å legge til tester:
+- Enhetstester for komponenter
+- Integrasjonstester for API-endepunkter
+- E2E-tester for brukerflyter
 
-## Development Workflows
+## Utviklingsarbeidsflyter
 
-### Starting Development
+### Starte Utvikling
 
 ```bash
-# Install dependencies
+# Installer avhengigheter
 npm install
 
-# Start all services
+# Start alle tjenester
 npm run dev
 
-# Or start individually
+# Eller start individuelt
 npm run dev:frontend
 npm run dev:backend
 ```
 
-### Adding Dependencies
+### Legge til Avhengigheter
 
-When agents add new dependencies:
-1. Add to the appropriate `package.json` (root, frontend, backend, or micros)
-2. Run `npm install` to update lock file
-3. Import and use in code
+Når agenter legger til nye avhengigheter:
+1. Legg til i den aktuelle `package.json` (root, frontend, backend, eller micros)
+2. Kjør `npm install` for å oppdatere lock-fil
+3. Importer og bruk i kode
 
-### Creating New Components
+### Opprette Nye Komponenter
 
-Agents should follow this structure:
+Agenter bør følge denne strukturen:
 
 ```
 ComponentName/
-├── index.tsx      # Main component logic
-├── styled.tsx     # Styled components (if using Emotion)
-└── types.tsx      # TypeScript types (if needed)
+├── index.tsx      # Hovedkomponentlogikk
+├── styled.tsx     # Styled components (hvis du bruker Emotion)
+└── types.tsx      # TypeScript-typer (hvis nødvendig)
 ```
 
-## API Integration
+## API-integrasjon
 
-### Backend Endpoints
+### Backend-endepunkter
 
-The backend provides RESTful APIs:
-- `GET /api/posts` - List all posts
-- `GET /api/posts/:slug` - Get single post
-- `GET /api/tags` - Get all tags
-- `GET /api/health` - Health check
+Backend tilbyr RESTful API-er:
+- `GET /api/posts` - List alle innlegg
+- `GET /api/posts/:slug` - Hent enkelt innlegg
+- `GET /api/tags` - Hent alle tags
+- `GET /api/health` - Helse-sjekk
 
-### Frontend API Client
+### Frontend API-klient
 
-Located at `frontend/src/clients/api.ts`, this client handles:
-- API requests
-- Error handling
-- Type-safe responses
+Lokalisert i `frontend/src/clients/api.ts`, denne klienten håndterer:
+- API-forespørsler
+- Feilhåndtering
+- Type-sikre responser
 
-## Micro-Frontend Architecture
+## Micro-Frontend Arkitektur
 
-The project uses micro-frontends for:
+Prosjektet bruker micro-frontends for:
 - **Navbar** (`micros/navbar-web`)
 - **Footer** (`micros/footer-web`)
 
-Agents working with micro-frontends should:
-- Maintain versioned components (`v1/`, `v2/`, etc.)
-- Keep demo pages for testing
-- Follow the same component structure patterns
+Agenter som jobber med micro-frontends bør:
+- Opprettholde versjonerte komponenter (`v1/`, `v2/`, osv.)
+- Beholde demo-sider for testing
+- Følge de samme komponentstruktur-mønstrene
 
-## Best Practices for Agents
+## Beste Praksis for Agenter
 
-1. **Read Before Writing**: Always read existing files to understand patterns
-2. **Type Safety**: Maintain TypeScript types throughout
-3. **Consistency**: Follow existing code style and patterns
-4. **Testing**: Consider adding tests for new features
-5. **Documentation**: Update relevant docs when adding features
+1. **Les før Skriving**: Les alltid eksisterende filer for å forstå mønstre
+2. **Typesikkerhet**: Oppretthold TypeScript-typer gjennom hele prosjektet
+3. **Konsistens**: Følg eksisterende kode-stil og mønstre
+4. **Testing**: Vurder å legge til tester for nye funksjoner
+5. **Dokumentasjon**: Oppdater relevant dokumentasjon når du legger til funksjoner
 
-## Common Patterns
+## Vanlige Mønstre
 
-### React Components
+### React-komponenter
 
 ```typescript
 import React from 'react';
 import { styled } from '@emotion/react';
 
 const Container = styled.div`
-  // styles here
+  // stiler her
 `;
 
 export const MyComponent = () => {
   return (
     <Container>
-      {/* component content */}
+      {/* komponentinnhold */}
     </Container>
   );
 };
 ```
 
-### API Endpoints
+### API-endepunkter
 
 ```typescript
 app.get('/api/endpoint', (req, res) => {
-  // handler logic
+  // handler-logikk
   res.json({ data: 'response' });
 });
 ```
 
-### Type Definitions
+### Typedefinisjoner
 
 ```typescript
 export interface MyType {
@@ -184,31 +184,31 @@ export interface MyType {
 }
 ```
 
-## Troubleshooting
+## Feilsøking
 
-### Common Issues
+### Vanlige Problemer
 
-1. **Type Errors**: Ensure all types are properly imported and defined
-2. **Module Resolution**: Check workspace configuration in root `package.json`
-3. **Port Conflicts**: Backend runs on 3001, frontend on 3000
+1. **Typefeil**: Sørg for at alle typer er riktig importert og definert
+2. **Moduloppløsning**: Sjekk workspace-konfigurasjon i root `package.json`
+3. **Portkonflikter**: Backend kjører på 3001, frontend på 3000
 
-### Getting Help
+### Få Hjelp
 
-When agents encounter issues:
-1. Check existing code for similar patterns
-2. Review TypeScript errors carefully
-3. Ensure dependencies are installed
-4. Verify workspace configuration
+Når agenter møter problemer:
+1. Sjekk eksisterende kode for lignende mønstre
+2. Gjennomgå TypeScript-feil nøye
+3. Sørg for at avhengigheter er installert
+4. Verifiser workspace-konfigurasjon
 
-## Future Enhancements
+## Fremtidige Forbedringer
 
-Agents can help implement:
-- Authentication system
-- Admin panel
-- Search and filtering
-- Related posts feature
-- Image uploads
-- Comments system
-- SEO improvements
+Agenter kan hjelpe med å implementere:
+- Autentiseringssystem
+- Admin-panel
+- Søk og filtrering
+- Relaterte innlegg-funksjon
+- Bildeopplasting
+- Kommentarsystem
+- SEO-forbedringer
 
-See `README.md` for detailed task descriptions.
+Se `README.md` for detaljerte oppgavebeskrivelser.
