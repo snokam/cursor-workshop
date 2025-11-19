@@ -1,8 +1,0 @@
-{
-  "vercel": {
-    "project": "micro-footer-web"
-  },
-  "tooling": {
-    "readiness": "Local:"
-  }
-}

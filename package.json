@@ -5,7 +5,6 @@
   "workspaces": [
     "frontend",
     "backend",
-    "packages/@snokam/*",
     "micros/*"
   ],
   "scripts": {
