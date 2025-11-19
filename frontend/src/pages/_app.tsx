@@ -1,11 +1,10 @@
-import { theme } from "@snokam/core/theme";
-import { ThemeProvider } from "@mui/material";
+import Theme from "@snokam/core/theme";
 import type { AppProps } from "next/app";
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <ThemeProvider theme={theme}>
+  <Theme.Provider>
     <Component {...pageProps} />
-  </ThemeProvider>
+  </Theme.Provider>
 );
 
 export default App;

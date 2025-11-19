@@ -1,5 +1,5 @@
 import { CommonMetaTags } from "@snokam/core";
-import { GlobalStyles } from "@mui/material";
+import { Global } from "@emotion/react";
 import { globalStyles } from "@/styles/global";
 import NextDocument, {
   Html,
@@ -13,7 +13,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <GlobalStyles styles={globalStyles} />
+        <Global styles={globalStyles} />
         <CommonMetaTags />
       </Head>
       <body>

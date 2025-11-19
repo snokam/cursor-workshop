@@ -14,7 +14,7 @@
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "@portabletext/react": "^5.0.0",
-    "@snokam/core": "*",
+    "@snokam/core": "^1.4.5",
     "@snokam/footer-web": "*",
     "@snokam/navbar-web": "*",
     "@types/node": "^24.10.1",
