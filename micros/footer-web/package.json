@@ -13,7 +13,7 @@
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "@snokam/core": "^1.4.5",
-    "next": "^16.0.3",
+    "next": "^16.1.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
