@@ -28,6 +28,7 @@ jobs:
       group: claude-apikey-${{ github.event.issue.number || github.event.pull_request.number || github.run_id }}
       cancel-in-progress: false
     runs-on: ubuntu-latest
+    environment: jira-github-workflow-p
     permissions:
       contents: write
       pull-requests: write
