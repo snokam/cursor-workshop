@@ -38,6 +38,4 @@ jobs:
           github_token: ${{ github.token }}
           claude_args: |
             --model claude-sonnet-4-6
-          prompt: |
-            After making any code changes, always create a pull request targeting the main branch.
-            Include a clear title and description summarising what was changed and why.
+            --system-prompt "After making any code changes, always create a pull request targeting the main branch using the gh CLI. Include a clear title and description summarising what was changed and why."
