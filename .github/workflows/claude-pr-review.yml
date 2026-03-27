@@ -1,0 +1,31 @@
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code PR Review
+        uses: anthropics/claude-code-action@v1
+        env:
+          ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_FOUNDRY_API_KEY }}
+          claude_args: |
+            --model claude-sonnet-4-6
+            --dangerously-skip-permissions
+          prompt: |
+            Review this pull request. Use `gh pr diff ${{ github.event.pull_request.number }}` to get the diff.
+            Focus on: bugs, security issues, logic errors, and code quality.
+            Post your review as a PR comment using `gh pr comment ${{ github.event.pull_request.number }} --body "..."`.
+            Be concise. Skip praise. Flag real issues only.
