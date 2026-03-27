@@ -1,4 +1,4 @@
-name: Claude Code (API Key)
+name: Claude Code
 
 on:
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     concurrency:
-      group: claude-apikey-${{ github.event.issue.number || github.event.pull_request.number || github.run_id }}
+      group: claude-${{ github.event.issue.number || github.event.pull_request.number || github.run_id }}
       cancel-in-progress: false
     runs-on: ubuntu-latest
     environment: jira-github-workflow-p
@@ -44,9 +44,13 @@ jobs:
       - name: Run Claude Code
         uses: anthropics/claude-code-action@v1
         env:
-          ANTHROPIC_BASE_URL: ${{ vars.ANTHROPIC_BASE_URL }}
+          ANTHROPIC_FOUNDRY_RESOURCE: ${{ vars.ANTHROPIC_FOUNDRY_RESOURCE }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_FOUNDRY_API_KEY }}
+          use_foundry: "true"
           claude_args: |
             --model claude-sonnet-4-6
             --dangerously-skip-permissions
