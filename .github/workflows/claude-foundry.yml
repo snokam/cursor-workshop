@@ -37,4 +37,4 @@ jobs:
           use_foundry: "true"
           github_token: ${{ github.token }}
           claude_args: |
-            --model claude-sonnet-4
+            --model claude-sonnet-4-6
