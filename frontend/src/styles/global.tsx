@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   :root {
-    --color-primary: #ff0000;
+    --color-primary: purple;
     --color-light-blue: #90ee90;
   }
 
